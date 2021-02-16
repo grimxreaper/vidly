@@ -11,6 +11,12 @@ const genres = [
 
 ]
 
-app.get('/', (req, res) => {
-    res.send('Hello World!!');
+app.get('/api/genres', (req, res) => {
+    res.send(genres);
+});
+
+app.get('/api/genres/:id', (req, res) => {
+    const genre = genres.find(g => g.id === parseInt(req.params.id));
+    if (!genre) return res.status(404).send('The genre was not found.');
+    res.send(genre);
 });
