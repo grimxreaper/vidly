@@ -13,6 +13,10 @@ const genres = [
 
 ]
 
+app.get('/', (req, res) => {
+    res.send('Hi Universe!');
+})
+
 app.get('/api/genres', (req, res) => {
     res.send(genres);
 });
