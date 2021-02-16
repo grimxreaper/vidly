@@ -1,14 +1,15 @@
-const { RSA_PKCS1_OAEP_PADDING } = require('constants');
+
+const Joi = require('joi');
 const express = require('express');
 const app = express();
 
 app.use(express.json());
 
 const genres = [
-    { name: 'action'},
-    { name: 'romcom'},
-    { name: 'scifi'},
-    { name: 'docu-drama'},
+    { id: 1, name: 'action'},
+    { id: 2, name: 'romcom'},
+    { id: 3, name: 'scifi'},
+    { id: 4, name: 'docu-drama'},
 
 ]
 
@@ -27,7 +28,7 @@ app.post('/api/genres', (req, res) => {
     if (error) return res.status(400).send('Invalid Genre')
 
     const genre = {
-        id: genres.length + 1;
+        id: genres.length + 1,
         name: req.body.name
     };
     genres.push(genre)
