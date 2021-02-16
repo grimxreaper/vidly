@@ -69,5 +69,7 @@ app.delete('/api/genres/:id', (req, res) => {
 
     //return the same genre
     res.send(genre);
-
 })
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Listening on port ${port}...`));
