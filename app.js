@@ -56,5 +56,18 @@ app.put('/api/genres/:id', (req, res) => {
     //update genres
     genre.name = req.body.name;
     res.send(course);
+})
+
+app.delete('/api/genres/:id', (req, res) => {
+    //look up the genre
+    //if it doesn't exist, return 404
+    const course = courses.find(c => c.id === parseInt(req.params.id));
+    if (!course) return res.status(404).send('The course with the given ID was not found.');
+    //delete
+    const index = genres.indexOf(genre);
+    genres.splice(index, 1);
+
+    //return the same genre
+    res.send(genre);
 
 })
